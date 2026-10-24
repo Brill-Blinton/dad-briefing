@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Family Board Meeting — 35 questions for Dad</title>
+<style>
+  :root{
+    --paper:#EEF1E6;        /* ledger paper, green-tinted */
+    --card:#FBFAF4;         /* raised sheet */
+    --ink:#20301F;          /* deep green-black ink */
+    --ink-soft:#54655270;
+    --ink-mid:#475544;
+    --brass:#A8791E;        /* brass clip */
+    --brass-deep:#6E4B0C;
+    --marker:#F6D95C;       /* highlighter yellow */
+    --stamp:#B3402A;        /* rubber-stamp red */
+    --rule:#C9CDB8;
+    --chip:#F1EFE2;
+    --chip-on:#20301F;
+    --chip-on-ink:#F6D95C;
+    --ok:#3E6B3A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:17px;line-height:1.5;
+    padding-bottom:96px;
+  }
+  ::selection{background:var(--marker);color:var(--ink)}
+
+  /* ---------- sticky header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--paper) 92%,transparent);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border-bottom:1.5px solid var(--ink);
+  }
+  .bar{
+    max-width:640px;margin:0 auto;padding:12px 18px 10px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .bar h1{
+    font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+    font-size:17px;font-weight:700;letter-spacing:.01em;flex:1;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .count{
+    font-family:ui-monospace,"SF Mono",Menlo,monospace;
+    font-size:12px;font-weight:700;letter-spacing:.06em;
+    background:var(--ink);color:var(--marker);
+    padding:5px 10px;border-radius:999px;white-space:nowrap;
+  }
+  .track{max-width:640px;margin:0 auto;padding:0 18px 12px}
+  .track .rail{height:6px;background:var(--rule);border-radius:3px;overflow:hidden}
+  .track .fill{height:100%;width:0%;background:var(--brass);border-radius:3px;transition:width .35s ease}
+
+  /* ---------- hero ---------- */
+  .hero{max-width:640px;margin:0 auto;padding:30px 18px 8px}
+  .eyebrow{
+    font-family:ui-monospace,"SF Mono",Menlo,monospace;
+    font-size:11px;font-weight:700;letter-spacing:.22em;
+    color:var(--brass-deep);text-transform:uppercase;
+  }
+  .hero h2{
+    font-family:Georgia,"Iowan Old Style",serif;
+    font-size:clamp(30px,8vw,40px);line-height:1.12;
+    margin:8px 0 12px;font-weight:700;
+  }
+  .hero h2 em{font-style:italic;color:var(--brass-deep)}
+  .hero p{color:var(--ink-mid);max-width:52ch}
+  .hero .lede strong{color:var(--ink)}
+  .promise{
+    margin-top:16px;display:flex;flex-direction:column;gap:8px;
+  }
+  .promise .p{
+    display:flex;gap:10px;align-items:flex-start;font-size:15.5px;
+  }
+  .promise .dot{
+    flex:0 0 auto;width:20px;height:20px;border-radius:50%;
+    background:var(--marker);border:1.5px solid var(--ink);
+    display:grid;place-items:center;
+    font-family:ui-monospace,monospace;font-size:10px;font-weight:800;margin-top:1px;
+  }
+  .dictate{
+    margin-top:16px;font-size:14.5px;color:var(--ink-mid);
+    border:1.5px dashed var(--brass);border-radius:10px;padding:10px 14px;
+    background:color-mix(in srgb,var(--marker) 14%,var(--card));
+  }
+  .dictate b{color:var(--ink)}
+
+  /* ---------- sections ---------- */
+  main{max-width:640px;margin:0 auto;padding:10px 18px 0}
+  section{margin-top:34px}
+  .sechead{display:flex;align-items:flex-start;gap:14px}
+  .letter{
+    flex:0 0 auto;width:44px;height:44px;border-radius:8px;
+    background:var(--ink);color:var(--marker);
+    font-family:Georgia,serif;font-size:22px;font-weight:700;
+    display:grid;place-items:center;transform:rotate(-2deg);
+    box-shadow:2px 2px 0 var(--brass);
+  }
+  .sechead .t h3{
+    font-family:Georgia,serif;font-size:22px;font-weight:700;line-height:1.15;
+  }
+  .sechead .t .why{font-size:14px;color:var(--ink-mid);margin-top:3px}
+  .secprog{
+    margin-left:auto;align-self:center;
+    font-family:ui-monospace,monospace;font-size:11px;font-weight:700;
+    color:var(--brass-deep);letter-spacing:.08em;white-space:nowrap;
+  }
+
+  /* ---------- question cards ---------- */
+  .q{
+    background:var(--card);border:1.5px solid var(--ink);border-radius:12px;
+    padding:16px 16px 14px;margin-top:14px;
+    box-shadow:3px 3px 0 color-mix(in srgb,var(--ink) 12%,transparent);
+  }
+  .q .num{
+    font-family:ui-monospace,monospace;font-size:11px;font-weight:700;
+    letter-spacing:.12em;color:var(--brass-deep);
+  }
+  .q label,.q .qt{
+    display:block;font-size:17.5px;font-weight:600;line-height:1.35;
+    margin:4px 0 12px;
+  }
+  .q .hint{font-size:13.5px;color:var(--ink-mid);font-weight:400;margin-top:-8px;margin-bottom:12px;font-style:italic}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    font-size:15px;font-weight:600;
+    background:var(--chip);border:1.5px solid var(--ink);border-radius:999px;
+    padding:8px 14px;cursor:pointer;user-select:none;
+    transition:transform .06s ease, background .12s ease, color .12s ease;
+  }
+  .chip:active{transform:scale(.96)}
+  .chip.on{background:var(--chip-on);color:var(--chip-on-ink);box-shadow:2px 2px 0 var(--brass)}
+  .chip:focus-visible,textarea:focus-visible,.mailbtn:focus-visible,.copybtn:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+  textarea{
+    width:100%;min-height:84px;resize:vertical;
+    font-family:inherit;font-size:16.5px;line-height:1.45;
+    background:#fff;border:1.5px solid var(--ink);border-radius:10px;
+    padding:10px 12px;color:var(--ink);
+  }
+  textarea::placeholder{color:#9AA48F}
+  .q .optional{font-size:12px;color:var(--ink-mid);font-weight:500}
+
+  /* ---------- closing / stamp ---------- */
+  .close-note{
+    margin:40px 0 8px;text-align:center;color:var(--ink-mid);font-size:15px;
+  }
+  .stampwrap{display:flex;justify-content:center;margin:18px 0 8px;min-height:0}
+  .stamp{
+    display:none;
+    font-family:ui-monospace,monospace;font-weight:800;letter-spacing:.2em;
+    color:var(--stamp);border:3.5px double var(--stamp);border-radius:8px;
+    padding:12px 22px;font-size:15px;text-transform:uppercase;
+    transform:rotate(-6deg);
+    background:color-mix(in srgb,var(--stamp) 5%,transparent);
+  }
+  .stamp.show{display:inline-block;animation:thump .45s cubic-bezier(.2,1.6,.4,1)}
+  @keyframes thump{0%{transform:rotate(-6deg) scale(2.4);opacity:0}60%{transform:rotate(-6deg) scale(.95);opacity:1}100%{transform:rotate(-6deg) scale(1)}}
+  @media (prefers-reduced-motion: reduce){
+    .stamp.show{animation:none}
+    .chip{transition:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* ---------- sticky action bar ---------- */
+  nav.actions{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;
+    background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border-top:1.5px solid var(--ink);
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  }
+  .actions .inner{max-width:640px;margin:0 auto;display:flex;gap:10px}
+  .copybtn{
+    flex:1.6;border:2px solid var(--ink);border-radius:12px;
+    background:var(--marker);color:var(--ink);
+    font-size:16.5px;font-weight:700;padding:13px 10px;cursor:pointer;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .copybtn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+  .mailbtn{
+    flex:1;border:2px solid var(--ink);border-radius:12px;
+    background:var(--card);color:var(--ink);
+    font-size:16px;font-weight:700;padding:13px 10px;cursor:pointer;
+  }
+  .mailbtn:active{transform:translateY(1px)}
+  .toast{
+    position:fixed;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:var(--marker);
+    font-size:14.5px;font-weight:600;padding:10px 18px;border-radius:999px;
+    opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:70;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <h1>The Family Board Meeting</h1>
+    <span class="count" id="countChip">0 / 35</span>
+  </div>
+  <div class="track"><div class="rail"><div class="fill" id="fill"></div></div></div>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">Case file: Dad &middot; Agenda &amp; minutes</div>
+  <h2>Consultation requested.<br><em>Advisor: you.</em></h2>
+  <p class="lede">You've run a practice, a house, and a son with a soldering-iron curiosity for longer than I've been keeping records. I'm building some things, and there are answers <strong>only you have</strong> — including a few you don't know you're holding yet.</p>
+  <div class="promise">
+    <div class="p"><span class="dot">1</span><span><strong>35 questions, about 15 minutes.</strong> Most are one tap. None have wrong answers.</span></div>
+    <div class="p"><span class="dot">2</span><span><strong>Nothing is uploaded.</strong> Your answers stay on this phone until you tap the bottom button and send them to me.</span></div>
+    <div class="p"><span class="dot">3</span><span><strong>You can leave and come back.</strong> This page remembers where you were. Finish it over coffee if you like.</span></div>
+  </div>
+  <div class="dictate"><b>Don't feel like typing?</b> Tap any answer box, then tap the microphone key on the keyboard and just talk. Spoken answers are the best answers — typos welcome, straight talk preferred.</div>
+</div>
+
+<main id="form"></main>
+
+<div class="close-note">End of agenda. Anything I forgot to ask — call me. That's what the phone is for.<br><span style="font-family:Georgia,serif;font-style:italic">— your son, with a clipboard and good intentions</span></div>
+<div class="stampwrap"><div class="stamp" id="stamp">Answered in full — board adjourned</div></div>
+<div style="height:8px"></div>
+
+<nav class="actions">
+  <div class="inner">
+    <button class="copybtn" id="copyBtn" type="button">Copy answers</button>
+    <button class="mailbtn" id="mailBtn" type="button">Mail it back</button>
+  </div>
+</nav>
+
+<div class="toast" id="toast">Answers copied — paste them in our chat</div>
+
+<script>
+"use strict";
+/* CONFIG — optional: put your email between the quotes to pre-address the mail-back.
+   Leave blank and Dad's Mail app will just ask him to pick you from contacts. */
+var REPLY_TO = "";
+
+function CHIP(id, q, options, hint){return {id:id, q:q, kind:"chips", options:options, hint:hint};}
+function TEXT(id, q, hint, optional){return {id:id, q:q, kind:"text", hint:hint, optional:!!optional};}
+function BOTH(id, q, options, hint){return {id:id, q:q, kind:"both", options:options, hint:hint};}
+
+var SECTIONS = [
+  {letter:"A", title:"The Front Desk", why:"You watch people become your customers every day — this is market research I can't buy anywhere.", qs:[
+    CHIP("a1","About how many phone calls does the practice get on a normal day?",["Under 10","10–25","25–50","50+","No idea"]),
+    CHIP("a2","What happens to a call that comes in at 6 pm, or during lunch?",["Voicemail","Answering service","Someone still picks up","It varies"]),
+    CHIP("a3","How do most patients book appointments?",["Call the desk","Online","Walk in","Referred in"]),
+    CHIP("a4","Roughly how many appointments get missed or no-showed in a week?",["Almost none","A handful","5–15","15+","No idea"]),
+    TEXT("a5","What does the front desk hate doing most?","This one's gold. Talk it out."),
+    TEXT("a6","When a patient asks a question the desk can't answer, what usually happens?",""),
+    TEXT("a7","Has a patient ever complained about getting hold of you? What did they say?","")
+  ]},
+  {letter:"B", title:"Solutionreach — the paid stack", why:"I want to learn what practice software really costs and really does — from a paying customer, not a sales page.", qs:[
+    CHIP("b1","Ballpark, what does Solutionreach cost per month?",["Under $100","$100–200","$200–300","$300–500","$500+","Rather not say"]),
+    TEXT("b2","What does it do that you'd genuinely miss if it vanished?",""),
+    TEXT("b3","What annoys you most about it?",""),
+    TEXT("b4","What do you wish it did that it doesn't?",""),
+    TEXT("b5","When it broke or messed something up, what actually broke?",""),
+    CHIP("b6","Who uses it day to day?",["Me","Office manager","Front desk","Honestly, nobody"]),
+    TEXT("b7","What else does the practice pay for, software-wise?","Names are plenty — no need for numbers.",true),
+    CHIP("b8","If something did the two or three things you'd actually miss — for $50 a month instead — would you switch?",["In a heartbeat","Only if it proved itself","No — switching is misery"]),
+    CHIP("b9","Would you spend 20 minutes walking me through your dashboard (patient names blurred)?",["Yes","Maybe","No"])
+  ]},
+  {letter:"C", title:"The House Network", why:"The Wi-Fi question. I want to keep the house and my computers safe — and I won't touch anything of yours without a clear yes.", qs:[
+    CHIP("c1","Who set up the home router, and who knows its admin password?",["Me","You","We both do","Nobody knows","It's the internet company's"]),
+    CHIP("c2","Would you be open to a separate guest network for the cameras and smart lights, so they can't reach my PC?",["Yes","No","Explain it first"]),
+    CHIP("c3","May I look at the router's settings page with you watching — look, not change?",["Yes","Later","No"]),
+    TEXT("c4","Anything in the house that's been acting weird on the Wi-Fi?","Slow spots, dropping cameras — the small stuff counts.",true)
+  ]},
+  {letter:"D", title:"The Parts Pile", why:"I think there's a server in that pile. I'd rather ask than assume.", qs:[
+    TEXT("d1","Where does the old computer-parts pile live these days?","Garage, basement, that one closet…"),
+    CHIP("d2","The old tower with the GTX 1080 Ti in it — may I bench-test it on the kitchen table?",["Yes","With you there","Later","No"]),
+    CHIP("d3","May I open its side panel and photograph the power supply sticker?",["Yes","No"]),
+    TEXT("d4","Anything in the pile that stays, no matter what?",""),
+    CHIP("d5","Anything in the pile you'd want to sell together with me?",["Yes","No","Let's see what's there"])
+  ]},
+  {letter:"E", title:"The Business Wisdom", why:"You've run a business longer than I've been alive. These are the answers I can't google.", qs:[
+    TEXT("e1","Best money decision you ever made in the practice?",""),
+    TEXT("e2","Worst one?",""),
+    TEXT("e3","When you raised prices, how did you tell patients — and what happened?",""),
+    TEXT("e4","How do you decide a vendor or a salesman is trustworthy?",""),
+    TEXT("e5","What do customers complain about that has an easy fix nobody does?",""),
+    TEXT("e6","What would you tell 21-year-old you about money?",""),
+    TEXT("e7","What skill would people pay you for, outside the practice?","",true)
+  ]},
+  {letter:"F", title:"Your Turn to Run the Meeting", why:"Last items on the agenda are yours.", qs:[
+    TEXT("f1","What question should I have asked you on this form?",""),
+    CHIP("f2","Which should I build first?",["The phone robot","Websites for shops","My shirt store","The old PC as a server","Surprise me"]),
+    CHIP("f3","Want a 20-minute “board meeting” call on the first Sunday of every month?",["Yes","Maybe","No"])
+  ]}
+];
+
+var KEY = "family-board-minutes-v1";
+var answers = {};
+try{ answers = JSON.parse(localStorage.getItem(KEY) || "{}"); }catch(e){ answers = {}; }
+
+function totalQs(){ return SECTIONS.reduce(function(n,s){return n + s.qs.length;},0); }
+function answeredQ(q){
+  var v = answers[q.id];
+  if(!v) return false;
+  if(q.kind === "chips") return (v.chips||[]).length > 0;
+  return (v.text||"").trim().length > 0;
+}
+function counts(){ return {done: SECTIONS.reduce(function(n,s){return n + s.qs.filter(answeredQ).length;},0), total: totalQs()}; }
+
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(answers)); }catch(e){} }
+
+function render(){
+  var main = document.getElementById("form");
+  var html = "";
+  var n = 0;
+  SECTIONS.forEach(function(s, si){
+    html += '<section id="sec'+si+'"><div class="sechead"><div class="letter">'+s.letter+'</div>' +
+      '<div class="t"><h3>'+s.title+'</h3><div class="why">'+s.why+'</div></div>' +
+      '<div class="secprog" id="prog'+si+'">0/'+s.qs.length+'</div></div>';
+    s.qs.forEach(function(q){
+      n += 1;
+      var num = String(n).padStart(2,"0");
+      html += '<div class="q" id="card_'+q.id+'"><span class="num">Q'+num+' &middot; '+s.letter+'</span>' +
+        '<span class="qt">'+q.q+'</span>';
+      if(q.hint) html += '<div class="hint">'+q.hint+'</div>';
+      if(q.kind === "chips" || q.kind === "both"){
+        html += '<div class="chips" id="chips_'+q.id+'">';
+        q.options.forEach(function(opt){
+          var on = answers[q.id] && (answers[q.id].chips||[]).indexOf(opt) >= 0;
+          html += '<button type="button" class="chip'+(on?" on":"")+'" data-qid="'+q.id+'" data-opt="'+opt+'">'+opt+'</button>';
+        });
+        html += '</div>';
+      }
+      if(q.kind === "text" || q.kind === "both"){
+        html += '<div style="margin-top:10px">' +
+          '<textarea id="ta_'+q.id+'" data-qid="'+q.id+'" placeholder="'+(q.optional?"Optional — skip if nothing comes":"Tap here, or tap the mic and just talk")+'">'+(answers[q.id]&&answers[q.id].text?escapeHtml(answers[q.id].text):"")+'</textarea>' +
+          '</div>';
+      }
+      html += '</div>';
+    });
+    html += '</section>';
+  });
+  main.innerHTML = html;
+}
+
+function escapeHtml(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+function updateProgress(){
+  var c = counts();
+  document.getElementById("countChip").textContent = c.done + " / " + c.total;
+  document.getElementById("fill").style.width = Math.round(100*c.done/c.total) + "%";
+  SECTIONS.forEach(function(s, si){
+    var el = document.getElementById("prog"+si);
+    if(el) el.textContent = s.qs.filter(answeredQ).length + "/" + s.qs.length;
+  });
+  var stamp = document.getElementById("stamp");
+  if(c.done === c.total){ stamp.classList.add("show"); }
+  else { stamp.classList.remove("show"); }
+}
+
+document.addEventListener("click", function(ev){
+  var t = ev.target.closest(".chip");
+  if(!t) return;
+  var qid = t.getAttribute("data-qid"), opt = t.getAttribute("data-opt");
+  var q = findQ(qid);
+  var rec = answers[qid] || {chips:[], text: answers[qid] && answers[qid].text || ""};
+  rec.chips = rec.chips || [];
+  var i = rec.chips.indexOf(opt);
+  if(i >= 0){ rec.chips.splice(i,1); } else { rec.chips.push(opt); }
+  answers[qid] = rec;
+  save(); refreshCard(qid, q); updateProgress();
+});
+
+document.addEventListener("input", function(ev){
+  var ta = ev.target.closest("textarea");
+  if(!ta) return;
+  var qid = ta.getAttribute("data-qid");
+  var rec = answers[qid] || {chips:(answers[qid]&&answers[qid].chips)||[], text:""};
+  rec.text = ta.value;
+  answers[qid] = rec;
+  save(); updateProgress();
+});
+
+function findQ(qid){
+  for(var i=0;i<SECTIONS.length;i++){
+    for(var j=0;j<SECTIONS[i].qs.length;j++){
+      if(SECTIONS[i].qs[j].id === qid) return SECTIONS[i].qs[j];
+    }
+  }
+  return null;
+}
+
+function refreshCard(qid, q){
+  var wrap = document.getElementById("chips_"+qid);
+  if(!wrap || !q) return;
+  var on = (answers[qid].chips || []);
+  Array.prototype.forEach.call(wrap.querySelectorAll(".chip"), function(b){
+    b.classList.toggle("on", on.indexOf(b.getAttribute("data-opt")) >= 0);
+  });
+}
+
+function buildDigest(){
+  var lines = [];
+  var d = new Date();
+  lines.push("FAMILY BOARD MEETING — Dad's answers");
+  lines.push(d.toLocaleDateString(undefined,{weekday:"long", year:"numeric", month:"long", day:"numeric"}));
+  lines.push("");
+  var n = 0;
+  SECTIONS.forEach(function(s){
+    var any = s.qs.some(answeredQ);
+    if(!any) return;
+    lines.push("―― " + s.letter + ". " + s.title.toUpperCase() + " ――");
+    s.qs.forEach(function(q){
+      if(!answeredQ(q)) return;
+      n += 1;
+      var v = answers[q.id];
+      if(q.kind === "chips"){
+        lines.push("Q" + n + ". " + q.q);
+        lines.push("→ " + (v.chips||[]).join(" / "));
+      } else if(q.kind === "text"){
+        lines.push("Q" + n + ". " + q.q);
+        lines.push("→ " + (v.text||"").trim());
+      } else {
+        lines.push("Q" + n + ". " + q.q);
+        var parts = [];
+        if((v.chips||[]).length) parts.push(v.chips.join(" / "));
+        if((v.text||"").trim()) parts.push((v.text||"").trim());
+        lines.push("→ " + parts.join(" — "));
+      }
+      lines.push("");
+    });
+  });
+  if(n === 0) lines.push("(No answers yet — the clipboard is empty.)");
+  lines.push("— answered " + n + " of " + totalQs() + " questions");
+  return lines.join("\n");
+}
+
+function copyDigest(){
+  var text = buildDigest();
+  var done = function(){
+    var t = document.getElementById("toast");
+    t.classList.add("show");
+    setTimeout(function(){ t.classList.remove("show"); }, 2600);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done, function(){ legacyCopy(text); done(); });
+  } else { legacyCopy(text); done(); }
+}
+
+function legacyCopy(text){
+  var ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed"; ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.select();
+  try{ document.execCommand("copy"); }catch(e){}
+  document.body.removeChild(ta);
+}
+
+document.getElementById("copyBtn").addEventListener("click", copyDigest);
+document.getElementById("mailBtn").addEventListener("click", function(){
+  var body = encodeURIComponent(buildDigest());
+  var to = REPLY_TO ? encodeURIComponent(REPLY_TO) : "";
+  var url = "mailto:" + to + "?subject=" + encodeURIComponent("Family Board Meeting — minutes") + "&body=" + body;
+  window.location.href = url;
+});
+
+render();
+updateProgress();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
