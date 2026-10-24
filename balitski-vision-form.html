@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Balitski Vision — Founding Board Meeting No. 001</title>
+<style>
+  :root{
+    --paper:#EEF1E6;
+    --card:#FBFAF4;
+    --ink:#20301F;
+    --ink-mid:#475544;
+    --brass:#A8791E;
+    --brass-deep:#6E4B0C;
+    --marker:#F6D95C;
+    --stamp:#B3402A;
+    --rule:#C9CDB8;
+    --chip:#F1EFE2;
+    --chip-on:#20301F;
+    --chip-on-ink:#F6D95C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:17px;line-height:1.5;
+    padding-bottom:110px;
+  }
+  ::selection{background:var(--marker);color:var(--ink)}
+
+  /* ---------- masthead ---------- */
+  .mast{max-width:680px;margin:0 auto;padding:34px 18px 6px;text-align:center}
+  .plate{
+    display:inline-block;
+    background:var(--ink);
+    border:1.5px solid var(--brass);
+    outline:4px solid var(--ink);
+    border-radius:6px;
+    padding:22px 30px 20px;
+    box-shadow:0 0 0 1px var(--brass) inset, 6px 6px 0 color-mix(in srgb,var(--ink) 18%,transparent);
+  }
+  .plate .est{
+    font-family:ui-monospace,"SF Mono",Menlo,monospace;
+    font-size:10.5px;font-weight:700;letter-spacing:.3em;
+    color:var(--brass);text-transform:uppercase;margin-bottom:10px;
+  }
+  .plate h1{
+    font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+    font-variant:small-caps;letter-spacing:.06em;
+    color:var(--card);
+    font-size:clamp(30px,8.5vw,44px);font-weight:700;line-height:1.05;
+  }
+  .plate .mtg{
+    font-family:Georgia,serif;font-style:italic;
+    color:var(--marker);font-size:15px;margin-top:8px;
+  }
+  .roles{
+    margin-top:18px;font-size:14px;color:var(--ink-mid);
+    display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
+  }
+  .roles b{color:var(--ink)}
+  .roles .sep{color:var(--brass-deep)}
+
+  /* ---------- sticky header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--paper) 92%,transparent);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border-bottom:1.5px solid var(--ink);
+  }
+  .bar{
+    max-width:680px;margin:0 auto;padding:11px 18px 9px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .bar h2{
+    font-family:Georgia,serif;font-variant:small-caps;
+    font-size:16.5px;font-weight:700;flex:1;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .count{
+    font-family:ui-monospace,"SF Mono",Menlo,monospace;
+    font-size:12px;font-weight:700;letter-spacing:.06em;
+    background:var(--ink);color:var(--marker);
+    padding:5px 10px;border-radius:999px;white-space:nowrap;
+  }
+  .track{max-width:680px;margin:0 auto;padding:0 18px 11px}
+  .track .rail{height:6px;background:var(--rule);border-radius:3px;overflow:hidden}
+  .track .fill{height:100%;width:0%;background:var(--brass);border-radius:3px;transition:width .35s ease}
+
+  /* ---------- hero copy ---------- */
+  .hero{max-width:680px;margin:0 auto;padding:26px 18px 4px}
+  .eyebrow{
+    font-family:ui-monospace,"SF Mono",Menlo,monospace;
+    font-size:11px;font-weight:700;letter-spacing:.22em;
+    color:var(--brass-deep);text-transform:uppercase;
+  }
+  .hero h3{
+    font-family:Georgia,serif;
+    font-size:clamp(24px,6vw,30px);line-height:1.18;
+    margin:8px 0 10px;font-weight:700;
+  }
+  .hero h3 em{font-style:italic;color:var(--brass-deep)}
+  .hero p{color:var(--ink-mid);max-width:56ch}
+  .hero .lede strong{color:var(--ink)}
+  .promise{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+  .promise .p{display:flex;gap:10px;align-items:flex-start;font-size:15.5px}
+  .promise .dot{
+    flex:0 0 auto;width:20px;height:20px;border-radius:50%;
+    background:var(--marker);border:1.5px solid var(--ink);
+    display:grid;place-items:center;
+    font-family:ui-monospace,monospace;font-size:10px;font-weight:800;margin-top:1px;
+  }
+  .dictate{
+    margin-top:16px;font-size:14.5px;color:var(--ink-mid);
+    border:1.5px dashed var(--brass);border-radius:10px;padding:10px 14px;
+    background:color-mix(in srgb,var(--marker) 14%,var(--card));
+  }
+  .dictate b{color:var(--ink)}
+
+  /* ---------- sections ---------- */
+  main{max-width:680px;margin:0 auto;padding:10px 18px 0}
+  section{margin-top:36px}
+  .sechead{display:flex;align-items:flex-start;gap:14px}
+  .letter{
+    flex:0 0 auto;width:44px;height:44px;border-radius:8px;
+    background:var(--ink);color:var(--marker);
+    font-family:Georgia,serif;font-size:22px;font-weight:700;
+    display:grid;place-items:center;transform:rotate(-2deg);
+    box-shadow:2px 2px 0 var(--brass);
+  }
+  .sechead .t h4{
+    font-family:Georgia,serif;font-size:22px;font-weight:700;line-height:1.15;
+  }
+  .sechead .t .why{font-size:14px;color:var(--ink-mid);margin-top:3px}
+  .secprog{
+    margin-left:auto;align-self:center;
+    font-family:ui-monospace,monospace;font-size:11px;font-weight:700;
+    color:var(--brass-deep);letter-spacing:.08em;white-space:nowrap;
+  }
+  .secbar{height:3px;background:var(--rule);border-radius:2px;margin-top:10px;overflow:hidden}
+  .secbar .sfill{height:100%;width:0%;background:var(--brass);transition:width .3s ease}
+
+  /* ---------- question cards ---------- */
+  .q{
+    background:var(--card);border:1.5px solid var(--ink);border-radius:12px;
+    padding:16px 16px 14px;margin-top:14px;
+    box-shadow:3px 3px 0 color-mix(in srgb,var(--ink) 12%,transparent);
+  }
+  .q .num{
+    font-family:ui-monospace,monospace;font-size:11px;font-weight:700;
+    letter-spacing:.12em;color:var(--brass-deep);
+  }
+  .q .qt{
+    display:block;font-size:17.5px;font-weight:600;line-height:1.35;
+    margin:4px 0 12px;
+  }
+  .q .hint{font-size:13.5px;color:var(--ink-mid);font-weight:400;margin-top:-8px;margin-bottom:12px;font-style:italic}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    font-size:15px;font-weight:600;min-height:44px;
+    background:var(--chip);border:1.5px solid var(--ink);border-radius:999px;
+    padding:9px 15px;cursor:pointer;user-select:none;
+    transition:transform .06s ease, background .12s ease, color .12s ease;
+  }
+  .chip:active{transform:scale(.96)}
+  .chip.on{background:var(--chip-on);color:var(--chip-on-ink);box-shadow:2px 2px 0 var(--brass)}
+  .chip:focus-visible,textarea:focus-visible,.sig:focus-visible,button:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+  textarea{
+    width:100%;min-height:84px;resize:vertical;
+    font-family:inherit;font-size:16.5px;line-height:1.45;
+    background:#fff;border:1.5px solid var(--ink);border-radius:10px;
+    padding:10px 12px;color:var(--ink);
+  }
+  textarea::placeholder{color:#9AA48F}
+
+  /* ---------- signature ---------- */
+  .sigcard{
+    background:var(--card);border:1.5px solid var(--ink);border-radius:12px;
+    padding:18px;margin-top:14px;box-shadow:3px 3px 0 color-mix(in srgb,var(--ink) 12%,transparent);
+  }
+  .sigline{
+    font-family:"Snell Roundhand","Segoe Script","Brush Script MT",cursive;
+    font-size:34px;min-height:44px;color:var(--ink);
+    border-bottom:2px solid var(--ink);padding:0 8px 4px;
+  }
+  .sigpad{
+    width:100%;height:220px;background:#fff;
+    border:1.5px dashed var(--brass);border-radius:10px;margin-top:14px;
+    touch-action:none;cursor:crosshair;display:block;
+  }
+  .sigmeta{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:13px;color:var(--ink-mid)}
+  .sigclear{
+    background:none;border:none;color:var(--stamp);font-weight:700;font-size:13.5px;
+    cursor:pointer;padding:6px 8px;
+  }
+  .datechip{
+    font-family:ui-monospace,monospace;font-size:12px;font-weight:700;
+    letter-spacing:.08em;color:var(--ink);
+    border:1.5px solid var(--ink);border-radius:6px;padding:4px 8px;background:var(--chip);
+  }
+
+  /* ---------- closing / seal ---------- */
+  .close-note{margin:40px 0 10px;text-align:center;color:var(--ink-mid);font-size:15px}
+  .close-note .sig{
+    font-family:Georgia,serif;font-style:italic;display:block;margin-top:6px;
+  }
+  .sealwrap{display:flex;justify-content:center;margin:20px 0 8px;min-height:0}
+  .seal{
+    display:none;
+    width:132px;height:132px;border-radius:50%;
+    background:radial-gradient(circle at 34% 30%, color-mix(in srgb,var(--stamp) 82%,#fff 8%), var(--stamp) 62%, color-mix(in srgb,var(--stamp) 70%,#000 22%));
+    color:var(--card);
+    flex-direction:column;align-items:center;justify-content:center;gap:2px;
+    box-shadow:0 3px 10px color-mix(in srgb,var(--stamp) 35%,transparent), inset 0 0 0 5px color-mix(in srgb,var(--card) 30%,transparent);
+    transform:rotate(-8deg);
+  }
+  .seal .mono{font-family:Georgia,serif;font-weight:700;font-size:34px;line-height:1}
+  .seal .word{font-family:ui-monospace,monospace;font-size:10.5px;font-weight:800;letter-spacing:.22em}
+  .seal.show{display:flex;animation:thump .5s cubic-bezier(.2,1.6,.4,1)}
+  @keyframes thump{0%{transform:rotate(-8deg) scale(2.4);opacity:0}60%{transform:rotate(-8deg) scale(.94);opacity:1}100%{transform:rotate(-8deg) scale(1)}}
+  @media (prefers-reduced-motion: reduce){
+    .seal.show{animation:none}
+    .chip{transition:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* ---------- sticky action bar ---------- */
+  nav.actions{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;
+    background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border-top:1.5px solid var(--ink);
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  }
+  .actions .inner{max-width:680px;margin:0 auto;display:flex;gap:8px}
+  .sendbtn{
+    flex:1.5;border:2px solid var(--ink);border-radius:12px;
+    background:var(--marker);color:var(--ink);
+    font-size:16.5px;font-weight:800;padding:13px 8px;cursor:pointer;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .sendbtn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+  .mailbtn,.copybtn{
+    flex:1;border:2px solid var(--ink);border-radius:12px;
+    background:var(--card);color:var(--ink);
+    font-size:15px;font-weight:700;padding:13px 8px;cursor:pointer;
+  }
+  .mailbtn:active,.copybtn:active{transform:translateY(1px)}
+  .sendhint{
+    max-width:680px;margin:7px auto 0;text-align:center;
+    font-size:12.5px;color:var(--ink);
+  }
+  .toast{
+    position:fixed;left:50%;bottom:120px;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:var(--marker);
+    font-size:14.5px;font-weight:600;padding:10px 18px;border-radius:999px;
+    opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:70;
+    max-width:88vw;text-align:center;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="mast">
+  <div class="plate">
+    <div class="est">Beaver County, PA &middot; Est. 2026</div>
+    <h1>Balitski Vision</h1>
+    <div class="mtg">Founding Board Meeting No. 001 — the Chairman's minutes</div>
+  </div>
+  <div class="roles">
+    <span><b>Chairman:</b> Dad</span><span class="sep">&bull;</span>
+    <span><b>Secretary &amp; Operator:</b> Ben</span><span class="sep">&bull;</span>
+    <span><b>Quorum:</b> the two of us</span>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <h2>The Minutes</h2>
+    <span class="count" id="countChip">0 / 0</span>
+  </div>
+  <div class="track"><div class="rail"><div class="fill" id="fill"></div></div></div>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">Call to order</div>
+  <h3>You're not answering a survey.<br><em>You're chairing the first meeting.</em></h3>
+  <p class="lede">The Vision has a name now, and a secretary who builds. What it doesn't have yet is a chairman's judgment — twenty-some years of running a practice, a house, and a reputation. <strong>This page collects it.</strong></p>
+  <div class="promise">
+    <div class="p"><span class="dot">1</span><span><strong>46 items, about 20 minutes.</strong> Most are one tap. None have wrong answers.</span></div>
+    <div class="p"><span class="dot">2</span><span><strong>Nothing is uploaded.</strong> Your answers stay on this phone until you tap <strong>Send the minutes</strong> and choose our chat.</span></div>
+    <div class="p"><span class="dot">3</span><span><strong>Leave and come back anytime.</strong> The page remembers where you were.</span></div>
+    <div class="p"><span class="dot">4</span><span><strong>Don't type — talk.</strong> Tap any answer box, tap the microphone key, and speak. Straight talk beats spelling.</span></div>
+  </div>
+</div>
+
+<main id="form"></main>
+
+<div class="close-note">
+  End of agenda. Anything the board forgot to ask — call the secretary. That's what the phone is for.
+  <span class="sig">Sign below, Chairman. The seal is waiting.</span>
+</div>
+<div class="sealwrap">
+  <div class="seal" id="seal"><span class="mono">BV</span><span class="word">Approved</span></div>
+</div>
+<div style="height:6px"></div>
+
+<nav class="actions">
+  <div class="inner">
+    <button class="sendbtn" id="sendBtn" type="button">Send the minutes</button>
+    <button class="mailbtn" id="mailBtn" type="button">Mail them</button>
+    <button class="copybtn" id="copyBtn" type="button">Copy</button>
+  </div>
+  <div class="sendhint">“Send” opens your share sheet — pick our thread. Nothing leaves this page until you do.</div>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+/* CONFIG — optional: put Ben's email between the quotes to pre-address "Mail them".
+   Leave blank and Mail will ask Dad to pick from contacts. */
+var REPLY_TO = "";
+
+var KEY = "balitski-vision-minutes-v1";
+var KEY_OLD = "family-board-minutes-v1";
+var KEY_SIG = "balitski-vision-sig-v1";
+
+function CHIP(id, q, options, hint){return {id:id, q:q, kind:"chips", options:options, hint:hint};}
+function TEXT(id, q, hint, optional){return {id:id, q:q, kind:"text", hint:hint, optional:!!optional};}
+function MULTICHIP(id, q, options, hint){return {id:id, q:q, kind:"chips", multi:true, options:options, hint:hint};}
+
+var SECTIONS = [
+  {letter:"A", title:"The Chairman's Office", why:"Every board starts with the job description. This one's yours to write.", qs:[
+    CHIP("o1","Your title on the letterhead?",["Chairman — I steer, Ben builds","Co-founder — hands-on","Investor — capital & counsel","Advisor — call me when it matters"]),
+    CHIP("o2","How much time does the board get each month?",["A call a month","About an hour a week","Whatever the Vision needs","Ask me again in spring"]),
+    CHIP("o3","Every chairman gets a veto. What's yours?",["Money risk","Family time","Reputation — run it past me first","Nothing I'd block yet"]),
+    TEXT("o4","One thing Balitski Vision must NEVER do?","The red line. Say it how you'd say it at the table."),
+    CHIP("o5","First executive order?",["Pay the card down before anything bold","Pick ONE venture, kill the rest","Build fast, fix later","You two decide — I'll watch"]),
+    TEXT("o6","What's in this for the Chairman?","What would make this worth your table time?",true)
+  ]},
+  {letter:"B", title:"The Practice Floor", why:"You run a real front desk every day. To me that's not a job — that's market data.", qs:[
+    CHIP("a1","About how many phone calls does the practice get on a normal day?",["Under 10","10–25","25–50","50+","No idea"]),
+    CHIP("a2","What happens to a call that comes in at 6 pm, or during lunch?",["Voicemail","Answering service","Someone still picks up","It varies"]),
+    CHIP("a3","How do most patients book appointments?",["Call the desk","Online","Walk in","Referred in"]),
+    CHIP("a4","Roughly how many appointments get missed or no-showed in a week?",["Almost none","A handful","5–15","15+","No idea"]),
+    TEXT("a5","What does the front desk hate doing most?","This one's gold. Talk it out."),
+    CHIP("b1","Ballpark, what does Solutionreach cost per month?",["Under $100","$100–200","$200–300","$300–500","$500+","Rather not say"]),
+    TEXT("b2","What would you genuinely miss if Solutionreach vanished tomorrow?",""),
+    TEXT("b3","What annoys you most about it?",""),
+    TEXT("b4","What do you wish it did that it doesn't?",""),
+    CHIP("b9","Would you spend 20 minutes walking me through your dashboard? Patient names blurred, board's honor.",["Yes","Maybe","No"]),
+    CHIP("n1","Would you let me build the practice a new website and review system? No patient data — ever. Just the storefront.",["Yes","Maybe — show me first","No"])
+  ]},
+  {letter:"C", title:"The Ledger of Lessons", why:"Twenty-some years of invoices, raises, and vendors. These answers aren't on the internet.", qs:[
+    TEXT("e1","Best money decision you ever made in the practice?",""),
+    TEXT("e2","Worst one?",""),
+    TEXT("e3","When you raised prices — how did you tell patients, and what happened?",""),
+    TEXT("e4","How do you decide a vendor or a salesman is trustworthy?",""),
+    TEXT("e5","A customer complaint with an easy fix nobody does — what is it?",""),
+    CHIP("e8","A dollar comes in the door. The Chairman's rule?",["Half to savings, always","Reinvest in the business","Kill debt first","Spend a little — or you'll quit"]),
+    TEXT("e6","What would you tell 21-year-old you about money?","")
+  ]},
+  {letter:"D", title:"The Network", why:"Your rolodex is an asset class. The Vision gets first dibs on it — if you'll open the book.", qs:[
+    MULTICHIP("n2","Where does your rolodex run deep?",["Auto & trades","Medical & dental","Restaurants & retail","Real estate","Banking & insurance","Local government","Coaches & schools","Somewhere else — tell me"]),
+    CHIP("n3","Would you make three introductions for the Vision this year?",["Yes","Yes — with a proper email first","Ask me when there's someone specific"]),
+    TEXT("n4","Who's the sharpest businessperson you know — and what makes them sharp?",""),
+    CHIP("n5","Would you door-knock WITH me sometime? Two Balitskis, one clipboard.",["Yes — schedule it","Once, as a demo","You're on your own, kid"]),
+    TEXT("n6","Any shop or owner around town you'd bet on?","Names are plenty.",true)
+  ]},
+  {letter:"E", title:"The Estate", why:"The house, the network, and the pile. Nothing gets touched without a clear yes — this is where the yeses live.", qs:[
+    CHIP("c1","Who set up the home router, and who knows its admin password?",["Me","You","We both do","Nobody knows","It's the internet company's"]),
+    CHIP("c2","Would you be open to a separate guest network for the cameras and smart lights — so they can't reach my PC?",["Yes","No","Explain it first"]),
+    CHIP("d2","The old tower with the GTX 1080 Ti — may I bench-test it on the kitchen table?",["Yes","With you there","Later","No"]),
+    CHIP("d3","May I open its side panel and photograph the power-supply sticker?",["Yes","No"])
+  ]},
+  {letter:"F", title:"The Shield", why:"Chairmen get targeted — you've seen the scam calls. This is the son putting armor on the family, with your hand on the wheel.", qs:[
+    CHIP("s1","Sit with me 30 minutes while I lock down your accounts — passwords, two-factor, the works?",["Yes","Yes — but not all at once","Later","No"]),
+    CHIP("s2","Where do your passwords live today?",["Same one everywhere","A notes app","The browser saves them","A password manager","On paper"]),
+    TEXT("s3","Ever gotten a scam that almost got you? What was the hook?","Your story trains my radar too."),
+    CHIP("s4","The practice still sends mail through old email accounts. Want that audited — with you watching — sometime?",["Yes","Maybe","No"]),
+    TEXT("s5","Anything about you online that should be locked down or gone?","",true)
+  ]},
+  {letter:"G", title:"The Vision", why:"The name's on the plate. Now the board decides what the name means.", qs:[
+    CHIP("f2","First build to fund and finish?",["The phone robot for shops","Websites for local shops","My shirt store","The old PC as a server","Surprise the board"]),
+    TEXT("v2","Ten years from now — what IS Balitski Vision?",""),
+    CHIP("v3","The mark on the letterhead?",["The eagle","The key","The mountain","The compass","The shield","Design it, Ben"]),
+    TEXT("v4","What should the Balitski name mean in this town?",""),
+    CHIP("f3","The board meets how often?",["First Sunday, standing call","Weeknights are better","Quarterly","When there's news"]),
+    TEXT("f1","What question should the board have asked you?","",true)
+  ]},
+  {letter:"H", title:"Sign the Minutes", why:"Then it's official — Meeting No. 001, on the record.", qs:[
+    TEXT("g1","Type your signature — the name as you'd sign it.","")
+  ]}
+];
+
+var answers = {};
+try{
+  answers = JSON.parse(localStorage.getItem(KEY) || "{}") || {};
+}catch(e){ answers = {}; }
+/* carry over any minutes already filled on the old form */
+if(Object.keys(answers).length === 0){
+  try{
+    var old = JSON.parse(localStorage.getItem(KEY_OLD) || "{}") || {};
+    Object.keys(old).forEach(function(k){
+      if(old[k] && (old[k].chips || (old[k].text && old[k].text.trim()))) answers[k] = old[k];
+    });
+  }catch(e){}
+}
+
+var hasDrawn = false;
+try{ hasDrawn = !!localStorage.getItem(KEY_SIG); }catch(e){}
+
+function totalQs(){ return SECTIONS.reduce(function(n,s){return n + s.qs.length;},0); }
+function answeredQ(q){
+  var v = answers[q.id];
+  if(!v) return false;
+  if(q.kind === "chips") return (v.chips||[]).length > 0;
+  return (v.text||"").trim().length > 0;
+}
+function counts(){ return {done: SECTIONS.reduce(function(n,s){return n + s.qs.filter(answeredQ).length;},0), total: totalQs()}; }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(answers)); }catch(e){} }
+
+function findQ(qid){
+  for(var i=0;i<SECTIONS.length;i++)
+    for(var j=0;j<SECTIONS[i].qs.length;j++)
+      if(SECTIONS[i].qs[j].id === qid) return SECTIONS[i].qs[j];
+  return null;
+}
+function escapeHtml(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+function render(){
+  var html = "";
+  var n = 0;
+  SECTIONS.forEach(function(s, si){
+    html += '<section id="sec'+si+'"><div class="sechead"><div class="letter">'+s.letter+'</div>' +
+      '<div class="t"><h4>'+s.title+'</h4><div class="why">'+s.why+'</div></div>' +
+      '<div class="secprog" id="prog'+si+'">0/'+s.qs.length+'</div></div>' +
+      '<div class="secbar"><div class="sfill" id="secfill'+si+'"></div></div>';
+    s.qs.forEach(function(q){
+      n += 1;
+      var num = String(n).padStart(2,"0");
+      html += '<div class="q" id="card_'+q.id+'"><span class="num">Item '+num+' &middot; '+s.letter+'</span>' +
+        '<span class="qt">'+q.q+'</span>';
+      if(q.hint) html += '<div class="hint">'+q.hint+'</div>';
+      if(q.kind === "chips"){
+        html += '<div class="chips" id="chips_'+q.id+'">';
+        q.options.forEach(function(opt){
+          var on = answers[q.id] && (answers[q.id].chips||[]).indexOf(opt) >= 0;
+          html += '<button type="button" class="chip'+(on?" on":"")+'" data-qid="'+q.id+'" data-opt="'+opt+'">'+escapeHtml(opt)+'</button>';
+        });
+        html += '</div>';
+      }
+      if(q.kind === "text"){
+        html += '<div style="margin-top:10px">' +
+          '<textarea id="ta_'+q.id+'" data-qid="'+q.id+'" placeholder="'+(q.optional?"Optional — skip if nothing comes":"Tap here, or tap the mic and just talk")+'">'+(answers[q.id]&&answers[q.id].text?escapeHtml(answers[q.id].text):"")+'</textarea>' +
+          '</div>';
+      }
+      html += '</div>';
+    });
+    html += '</section>';
+  });
+  /* signature card */
+  html += '<section id="secSIG"><div class="sechead"><div class="letter">H</div>' +
+    '<div class="t"><h4>The Chairman&rsquo;s signature</h4><div class="why">Typed above is the record. Drawn below is the flourish.</div></div>' +
+    '<div class="secprog" id="progSIG">—</div></div>' +
+    '<div class="sigbar"></div>' +
+    '<div class="sigcard">' +
+    '<div class="sigline" id="sigline">'+escapeHtml((answers["g1"]&&answers["g1"].text||""))+'</div>' +
+    '<canvas class="sigpad" id="sigpad" width="600" height="240"></canvas>' +
+    '<div class="sigmeta"><span>sign with your finger</span>' +
+    '<span class="datechip" id="dateChip"></span>' +
+    '<button type="button" class="sigclear" id="sigClear">Clear</button></div>' +
+    '</div></section>';
+
+  document.getElementById("form").innerHTML = html;
+
+  document.getElementById("dateChip").textContent = new Date()
+    .toLocaleDateString(undefined,{month:"short", day:"numeric", year:"numeric"}).toUpperCase();
+}
+
+function updateProgress(){
+  var c = counts();
+  document.getElementById("countChip").textContent = c.done + " / " + c.total;
+  document.getElementById("fill").style.width = Math.round(100*c.done/c.total) + "%";
+  SECTIONS.forEach(function(s, si){
+    var d = s.qs.filter(answeredQ).length;
+    var el = document.getElementById("prog"+si);
+    var bar = document.getElementById("secfill"+si);
+    if(el) el.textContent = d + "/" + s.qs.length;
+    if(bar) bar.style.width = Math.round(100*d/s.qs.length) + "%";
+  });
+  var complete = c.done === c.total && hasDrawn;
+  document.getElementById("seal").classList.toggle("show", complete);
+}
+
+/* ---------- interactions ---------- */
+document.addEventListener("click", function(ev){
+  var t = ev.target.closest(".chip");
+  if(!t) return;
+  var qid = t.getAttribute("data-qid"), opt = t.getAttribute("data-opt");
+  var q = findQ(qid);
+  var rec = answers[qid] || {chips:[], text:(answers[qid]&&answers[qid].text)||""};
+  rec.chips = rec.chips || [];
+  var i = rec.chips.indexOf(opt);
+  if(!q || !q.multi){
+    if(i >= 0){ rec.chips = []; } else { rec.chips = [opt]; }
+  } else {
+    if(i >= 0){ rec.chips.splice(i,1); } else { rec.chips.push(opt); }
+  }
+  answers[qid] = rec;
+  save(); refreshCard(qid); updateProgress();
+});
+
+document.addEventListener("input", function(ev){
+  var ta = ev.target.closest("textarea");
+  if(!ta) return;
+  var qid = ta.getAttribute("data-qid");
+  var rec = answers[qid] || {chips:(answers[qid]&&answers[qid].chips)||[], text:""};
+  rec.text = ta.value;
+  answers[qid] = rec;
+  if(qid === "g1") document.getElementById("sigline").textContent = ta.value;
+  save(); updateProgress();
+});
+
+function refreshCard(qid){
+  var wrap = document.getElementById("chips_"+qid);
+  if(!wrap) return;
+  var on = (answers[qid].chips || []);
+  Array.prototype.forEach.call(wrap.querySelectorAll(".chip"), function(b){
+    b.classList.toggle("on", on.indexOf(b.getAttribute("data-opt")) >= 0);
+  });
+}
+
+/* ---------- signature pad ---------- */
+function initSig(){
+  var pad = document.getElementById("sigpad");
+  var ctx = pad.getContext("2d");
+  var dpr = window.devicePixelRatio || 1;
+  var cssW = pad.clientWidth, cssH = pad.clientHeight;
+  pad.width = cssW * dpr; pad.height = cssH * dpr;
+  ctx.scale(dpr, dpr);
+  ctx.lineWidth = 3; ctx.lineCap = "round"; ctx.lineJoin = "round";
+  var ink = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim() || "#20301F";
+  ctx.strokeStyle = ink;
+
+  if(hasDrawn){
+    try{
+      var img = new Image();
+      img.onload = function(){ ctx.drawImage(img, 0, 0, cssW, cssH); };
+      img.src = localStorage.getItem(KEY_SIG);
+    }catch(e){}
+  }
+
+  var drawing = false, last = null;
+  function pos(ev){
+    var r = pad.getBoundingClientRect();
+    return {x: ev.clientX - r.left, y: ev.clientY - r.top};
+  }
+  pad.addEventListener("pointerdown", function(ev){
+    ev.preventDefault();
+    drawing = true; last = pos(ev);
+    pad.setPointerCapture(ev.pointerId);
+  });
+  pad.addEventListener("pointermove", function(ev){
+    if(!drawing) return;
+    ev.preventDefault();
+    var p = pos(ev);
+    ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+    last = p;
+    if(!hasDrawn){ hasDrawn = true; try{ pad.dataset.dirty = "1"; }catch(e){} updateProgress(); }
+  });
+  ["pointerup","pointercancel","pointerleave"].forEach(function(evt){
+    pad.addEventListener(evt, function(){
+      if(!drawing) return;
+      drawing = false;
+      try{ localStorage.setItem(KEY_SIG, pad.toDataURL("image/png")); }catch(e){}
+    });
+  });
+  document.getElementById("sigClear").addEventListener("click", function(){
+    ctx.clearRect(0, 0, cssW, cssH);
+    hasDrawn = false;
+    try{ localStorage.removeItem(KEY_SIG); }catch(e){}
+    updateProgress();
+  });
+}
+
+/* ---------- the minutes ---------- */
+function buildDigest(){
+  var lines = [];
+  lines.push("BALITSKI VISION — MINUTES, MEETING No. 001");
+  lines.push(new Date().toLocaleDateString(undefined,{weekday:"long", year:"numeric", month:"long", day:"numeric"}));
+  lines.push("Chairman: Dad · Secretary: Ben");
+  lines.push("");
+  var n = 0;
+  SECTIONS.forEach(function(s){
+    var any = s.qs.some(answeredQ);
+    if(!any) return;
+    lines.push("―― " + s.letter + ". " + s.title.toUpperCase() + " ――");
+    s.qs.forEach(function(q){
+      if(!answeredQ(q)) return;
+      n += 1;
+      var v = answers[q.id];
+      var parts = [];
+      if((v.chips||[]).length) parts.push(v.chips.join(" / "));
+      if((v.text||"").trim()) parts.push((v.text||"").trim());
+      lines.push("Item " + n + " — " + q.q);
+      lines.push("→ " + parts.join(" — "));
+      lines.push("");
+    });
+  });
+  if(n === 0) lines.push("(The Chairman listened, said nothing yet — and kept the pen.)");
+  var name = answers["g1"] && answers["g1"].text ? answers["g1"].text.trim() : "";
+  lines.push("— answered " + n + " of " + totalQs() + " items" + (hasDrawn ? ", SIGNED" + (name ? " by " + name : "") + " (signature" + (canAttachSig() ? " attached" : " on file") + ")" : (name ? ", noted by " + name : "")));
+  return lines.join("\n");
+}
+
+function canAttachSig(){
+  try{
+    return hasDrawn && navigator.canShare && typeof File !== "undefined";
+  }catch(e){ return false; }
+}
+
+function sigFile(){
+  if(!hasDrawn) return null;
+  try{
+    var dataUrl = localStorage.getItem(KEY_SIG);
+    if(!dataUrl) return null;
+    var parts = dataUrl.split(",base64:");
+    if(parts.length !== 2) return null;
+    var bin = atob(parts[1]);
+    var arr = new Uint8Array(bin.length);
+    for(var i=0;i<bin.length;i++) arr[i] = bin.charCodeAt(i);
+    return new File([arr], "chairman-signature.png", {type:"image/png"});
+  }catch(e){ return null; }
+}
+
+function toast(msg){
+  var t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(function(){ t.classList.remove("show"); }, 2800);
+}
+
+document.getElementById("sendBtn").addEventListener("click", function(){
+  var text = buildDigest();
+  var file = sigFile();
+  var title = "Balitski Vision — Minutes, Meeting No. 001";
+  if(file && navigator.canShare && navigator.canShare({files:[file]})){
+    navigator.share({title:title, text:text, files:[file]})
+      .catch(function(e){ if(e && e.name !== "AbortError") fallbackShare(text); });
+    return;
+  }
+  if(navigator.share){
+    navigator.share({title:title, text:text})
+      .catch(function(e){ if(e && e.name !== "AbortError") fallbackShare(text); });
+    return;
+  }
+  fallbackShare(text);
+});
+
+function fallbackShare(text){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(
+      function(){ toast("Share not available here — minutes copied. Paste them in our chat."); },
+      function(){ legacyCopy(text); toast("Minutes copied — paste them in our chat."); }
+    );
+  } else { legacyCopy(text); toast("Minutes copied — paste them in our chat."); }
+}
+
+function legacyCopy(text){
+  var ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed"; ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.select();
+  try{ document.execCommand("copy"); }catch(e){}
+  document.body.removeChild(ta);
+}
+
+document.getElementById("mailBtn").addEventListener("click", function(){
+  var body = buildDigest();
+  if(body.length > 6000){
+    toast("Too long for Mail — use Send instead, or Copy.");
+    return;
+  }
+  var to = REPLY_TO ? encodeURIComponent(REPLY_TO) : "";
+  var url = "mailto:" + to + "?subject=" + encodeURIComponent("Balitski Vision — Minutes, Meeting No. 001") + "&body=" + encodeURIComponent(body);
+  window.location.href = url;
+});
+
+document.getElementById("copyBtn").addEventListener("click", function(){
+  var text = buildDigest();
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(
+      function(){ toast("Minutes copied — paste them in our chat."); },
+      function(){ legacyCopy(text); toast("Minutes copied — paste them in our chat."); }
+    );
+  } else { legacyCopy(text); toast("Minutes copied — paste them in our chat."); }
+});
+
+render();
+initSig();
+updateProgress();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
