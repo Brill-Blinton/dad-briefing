@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Balitski Vision — Founding Board Meeting No. 001</title>
+<title>Balitski Vision — questions for Dad</title>
 <style>
   :root{
     --paper:#EEF1E6;
@@ -268,18 +268,17 @@
   <div class="plate">
     <div class="est">Beaver County, PA &middot; Est. 2026</div>
     <h1>Balitski Vision</h1>
-    <div class="mtg">Founding Board Meeting No. 001 — the Chairman's minutes</div>
+    <div class="mtg">Questions for the guy who actually runs one &mdash; you.</div>
   </div>
   <div class="roles">
-    <span><b>Chairman:</b> Dad</span><span class="sep">&bull;</span>
-    <span><b>Secretary &amp; Operator:</b> Ben</span><span class="sep">&bull;</span>
-    <span><b>Quorum:</b> the two of us</span>
+    <span>One owner with the answers.</span><span class="sep">&bull;</span>
+    <span>One son with too many questions.</span>
   </div>
 </div>
 
 <header>
   <div class="bar">
-    <h2>The Minutes</h2>
+    <h2>The Questions</h2>
     <span class="count" id="countChip">0 / 0</span>
   </div>
   <div class="track"><div class="rail"><div class="fill" id="fill"></div></div></div>
@@ -287,11 +286,11 @@
 
 <div class="hero">
   <div class="eyebrow">Call to order</div>
-  <h3>You're not answering a survey.<br><em>You're chairing the first meeting.</em></h3>
-  <p class="lede">The Vision has a name now, and a secretary who builds. What it doesn't have yet is a chairman's judgment — twenty-some years of running a practice, a house, and a reputation. <strong>This page collects it.</strong></p>
+  <h3>You're not answering a survey.<br><em>You're the only one who's done it.</em></h3>
+  <p class="lede">I'm building some things, and I'd rather build them right than fast. Before I do, I want the answers of someone who's <strong>owned and run a small business</strong> — the hiring, the bills, the customers, the days it goes sideways. That's you. So: real questions, no wrong answers, and everything below stays on your phone until you send it.</p>
   <div class="promise">
-    <div class="p"><span class="dot">1</span><span><strong>45 items, about 20 minutes.</strong> Most are one tap. None have wrong answers.</span></div>
-    <div class="p"><span class="dot">2</span><span><strong>Nothing is uploaded.</strong> Your answers stay on this phone until you tap <strong>Send the minutes</strong> and choose our chat.</span></div>
+    <div class="p"><span class="dot">1</span><span><strong>43 questions, about 20 minutes.</strong> Most are one tap. None have wrong answers.</span></div>
+    <div class="p"><span class="dot">2</span><span><strong>Nothing is uploaded.</strong> Your answers stay on this phone until you tap <strong>Send my answers</strong> and choose our chat.</span></div>
     <div class="p"><span class="dot">3</span><span><strong>Leave and come back anytime.</strong> The page remembers where you were.</span></div>
     <div class="p"><span class="dot">4</span><span><strong>Don't type — talk.</strong> Tap any answer box, tap the microphone key, and speak. Straight talk beats spelling.</span></div>
   </div>
@@ -300,8 +299,8 @@
 <main id="form"></main>
 
 <div class="close-note">
-  End of agenda. Anything the board forgot to ask — call the secretary. That's what the phone is for.
-  <span class="sig">Sign below, Chairman. The seal is waiting.</span>
+  Anything I forgot to ask — call me. That's what the phone is for.
+  <span class="sig">Sign below. The seal is waiting.</span>
 </div>
 <div class="sealwrap">
   <div class="seal" id="seal"><span class="mono">BV</span><span class="word">Approved</span></div>
@@ -310,11 +309,11 @@
 
 <nav class="actions">
   <div class="inner">
-    <button class="sendbtn" id="sendBtn" type="button">Send the minutes</button>
+    <button class="sendbtn" id="sendBtn" type="button">Send my answers</button>
     <button class="mailbtn" id="mailBtn" type="button">Mail them</button>
     <button class="copybtn" id="copyBtn" type="button">Copy</button>
   </div>
-  <div class="sendhint">“Send” opens your share sheet — pick our thread. Nothing leaves this page until you do.</div>
+  <div class="sendhint">“Send my answers” opens your share sheet — pick our thread. Nothing leaves this page until you do.</div>
 </nav>
 
 <div class="toast" id="toast"></div>
@@ -334,13 +333,11 @@ function TEXT(id, q, hint, optional){return {id:id, q:q, kind:"text", hint:hint,
 function MULTICHIP(id, q, options, hint){return {id:id, q:q, kind:"chips", multi:true, options:options, hint:hint};}
 
 var SECTIONS = [
-  {letter:"A", title:"The Chairman's Office", why:"Every board starts with the job description. This one's yours to write.", qs:[
-    CHIP("o1","Your title on the letterhead?",["Chairman — I steer, Ben builds","Co-founder — hands-on","Investor — capital & counsel","Advisor — call me when it matters"]),
-    CHIP("o2","How much time does the board get each month?",["A call a month","About an hour a week","Whatever the Vision needs","Ask me again in spring"]),
-    CHIP("o3","Every chairman gets a veto. What's yours?",["Money risk","Family time","Reputation — run it past me first","Nothing I'd block yet"]),
+  {letter:"A", title:"The Owner", why:"You own and run a business. Most people never have. These questions only work because it's you.", qs:[
+    CHIP("o2","How much do you want to be part of this?",["Just keep me posted","Ask me things like this sometimes","Call me when you're stuck","Up to my elbows — let's build"]),
     TEXT("o4","One thing Balitski Vision must NEVER do?","The red line. Say it how you'd say it at the table."),
-    CHIP("o5","First executive order?",["Pay the card down before anything bold","Pick ONE venture, kill the rest","Build fast, fix later","You two decide — I'll watch"]),
-    TEXT("o6","What's in this for the Chairman?","What would make this worth your table time?",true)
+    CHIP("o5","Your first rule for me as I build?",["Pay the card down before anything bold","Pick ONE venture, kill the rest","Build fast, fix later","You two decide — I'll watch"]),
+    TEXT("o6","What would make this worth your time?","",true)
   ]},
   {letter:"B", title:"The Practice Floor", why:"You run a real front desk every day. To me that's not a job — that's market data.", qs:[
     CHIP("a1","About how many phone calls does the practice get on a normal day?",["Under 10","10–25","25–50","50+","No idea"]),
@@ -352,7 +349,7 @@ var SECTIONS = [
     TEXT("b2","What would you genuinely miss if Solutionreach vanished tomorrow?",""),
     TEXT("b3","What annoys you most about it?",""),
     TEXT("b4","What do you wish it did that it doesn't?",""),
-    CHIP("b9","Would you spend 20 minutes walking me through your dashboard? Patient names blurred, board's honor.",["Yes","Maybe","No"]),
+    CHIP("b9","Would you spend 20 minutes walking me through your dashboard? Patient names blurred, promise.",["Yes","Maybe","No"]),
     CHIP("n1","Would you let me build the practice a new website and review system? No patient data — ever. Just the storefront.",["Yes","Maybe — show me first","No"])
   ]},
   {letter:"C", title:"The Ledger of Lessons", why:"Twenty-some years of invoices, raises, and vendors. These answers aren't on the internet.", qs:[
@@ -361,12 +358,12 @@ var SECTIONS = [
     TEXT("e3","When you raised prices — how did you tell patients, and what happened?",""),
     TEXT("e4","How do you decide a vendor or a salesman is trustworthy?",""),
     TEXT("e5","A customer complaint with an easy fix nobody does — what is it?",""),
-    CHIP("e8","A dollar comes in the door. The Chairman's rule?",["Half to savings, always","Reinvest in the business","Kill debt first","Spend a little — or you'll quit"]),
+    CHIP("e8","A dollar comes in the door. Your rule?",["Half to savings, always","Reinvest in the business","Kill debt first","Spend a little — or you'll quit"]),
     TEXT("e6","What would you tell 21-year-old you about money?","")
   ]},
-  {letter:"D", title:"The Network", why:"Your rolodex is an asset class. The Vision gets first dibs on it — if you'll open the book.", qs:[
+  {letter:"D", title:"The Network", why:"You know everyone worth knowing in this town. I can't buy that — I'm asking for it.", qs:[
     MULTICHIP("n2","Where does your rolodex run deep?",["Auto & trades","Medical & dental","Restaurants & retail","Real estate","Banking & insurance","Local government","Coaches & schools","Somewhere else — tell me"]),
-    CHIP("n3","Would you make three introductions for the Vision this year?",["Yes","Yes — with a proper email first","Ask me when there's someone specific"]),
+    CHIP("n3","Would you make three introductions for me this year?",["Yes","Yes — with a proper email first","Ask me when there's someone specific"]),
     TEXT("n4","Who's the sharpest businessperson you know — and what makes them sharp?",""),
     CHIP("n5","Would you door-knock WITH me sometime? Two Balitskis, one clipboard.",["Yes — schedule it","Once, as a demo","You're on your own, kid"]),
     TEXT("n6","Any shop or owner around town you'd bet on?","Names are plenty.",true)
@@ -384,15 +381,15 @@ var SECTIONS = [
     CHIP("s4","The practice still sends mail through old email accounts. Want that audited — with you watching — sometime?",["Yes","Maybe","No"]),
     TEXT("s5","Anything about you online that should be locked down or gone?","",true)
   ]},
-  {letter:"G", title:"The Vision", why:"The name's on the plate. Now the board decides what the name means.", qs:[
-    CHIP("f2","First build to fund and finish?",["The phone robot for shops","Websites for local shops","My shirt store","The old PC as a server","Surprise the board"]),
+  {letter:"G", title:"The Vision", why:"The name's on the plate. Now we decide what it means.", qs:[
+    CHIP("f2","First build to fund and finish?",["The phone robot for shops","Websites for local shops","My shirt store","The old PC as a server","Surprise me"]),
     TEXT("v2","Ten years from now — what IS Balitski Vision?",""),
     CHIP("v3","The mark on the letterhead?",["The eagle","The key","The mountain","The compass","The shield","Design it, Ben"]),
     TEXT("v4","What should the Balitski name mean in this town?",""),
-    CHIP("f3","The board meets how often?",["First Sunday, standing call","Weeknights are better","Quarterly","When there's news"]),
-    TEXT("f1","What question should the board have asked you?","",true)
+    CHIP("f3","How often should I check in — or ask for help?",["First Sunday of the month, standing call","Weeknights are better","Every few months is plenty","When there's news"]),
+    TEXT("f1","What question should I have asked you?","",true)
   ]},
-  {letter:"H", title:"Sign the Minutes", why:"Then it's official — Meeting No. 001, on the record.", qs:[
+  {letter:"H", title:"Sign the Page", why:"Every good form ends with a signature. This one's yours.", qs:[
     TEXT("g1","Type your signature — the name as you'd sign it.","")
   ]}
 ];
@@ -401,7 +398,7 @@ var answers = {};
 try{
   answers = JSON.parse(localStorage.getItem(KEY) || "{}") || {};
 }catch(e){ answers = {}; }
-/* carry over any minutes already filled on the old form */
+/* carry over answers from the older form */
 if(Object.keys(answers).length === 0){
   try{
     var old = JSON.parse(localStorage.getItem(KEY_OLD) || "{}") || {};
@@ -465,7 +462,7 @@ function render(){
   });
   /* signature card */
   html += '<section id="secSIG"><div class="sechead"><div class="letter">H</div>' +
-    '<div class="t"><h4>The Chairman&rsquo;s signature</h4><div class="why">Typed above is the record. Drawn below is the flourish.</div></div>' +
+    '<div class="t"><h4>The signature</h4><div class="why">Typed above is the record. Drawn below is the flourish.</div></div>' +
     '<div class="secprog" id="progSIG">—</div></div>' +
     '<div class="sigbar"></div>' +
     '<div class="sigcard">' +
@@ -588,13 +585,12 @@ function initSig(){
   });
 }
 
-/* ---------- the minutes ---------- */
+/* ---------- the answers digest ---------- */
 function buildDigest(){
   var lines = [];
-  lines.push("BALITSKI VISION — MINUTES, MEETING No. 001");
+  lines.push("BALITSKI VISION — DAD'S ANSWERS");
   lines.push(new Date().toLocaleDateString(undefined,{weekday:"long", year:"numeric", month:"long", day:"numeric"}));
-  lines.push("Chairman: Dad · Secretary: Ben");
-  lines.push("");
+    lines.push("");
   var n = 0;
   SECTIONS.forEach(function(s){
     var any = s.qs.some(answeredQ);
@@ -612,7 +608,7 @@ function buildDigest(){
       lines.push("");
     });
   });
-  if(n === 0) lines.push("(The Chairman listened, said nothing yet — and kept the pen.)");
+  if(n === 0) lines.push("(No answers yet — the clipboard is empty.)");
   var name = answers["g1"] && answers["g1"].text ? answers["g1"].text.trim() : "";
   lines.push("— answered " + n + " of " + totalQs() + " items" + (hasDrawn ? ", SIGNED" + (name ? " by " + name : "") + " (signature" + (canAttachSig() ? " attached" : " on file") + ")" : (name ? ", noted by " + name : "")));
   return lines.join("\n");
@@ -634,7 +630,7 @@ function sigFile(){
     var bin = atob(parts[1]);
     var arr = new Uint8Array(bin.length);
     for(var i=0;i<bin.length;i++) arr[i] = bin.charCodeAt(i);
-    return new File([arr], "chairman-signature.png", {type:"image/png"});
+    return new File([arr], "dad-signature.png", {type:"image/png"});
   }catch(e){ return null; }
 }
 
@@ -648,7 +644,7 @@ function toast(msg){
 document.getElementById("sendBtn").addEventListener("click", function(){
   var text = buildDigest();
   var file = sigFile();
-  var title = "Balitski Vision — Minutes, Meeting No. 001";
+  var title = "Balitski Vision — Dad's answers";
   if(file && navigator.canShare && navigator.canShare({files:[file]})){
     navigator.share({title:title, text:text, files:[file]})
       .catch(function(e){ if(e && e.name !== "AbortError") fallbackShare(text); });
@@ -665,10 +661,10 @@ document.getElementById("sendBtn").addEventListener("click", function(){
 function fallbackShare(text){
   if(navigator.clipboard && navigator.clipboard.writeText){
     navigator.clipboard.writeText(text).then(
-      function(){ toast("Share not available here — minutes copied. Paste them in our chat."); },
-      function(){ legacyCopy(text); toast("Minutes copied — paste them in our chat."); }
+      function(){ toast("Share not available here — answers copied. Paste them in our chat."); },
+      function(){ legacyCopy(text); toast("Answers copied — paste them in our chat."); }
     );
-  } else { legacyCopy(text); toast("Minutes copied — paste them in our chat."); }
+  } else { legacyCopy(text); toast("Answers copied — paste them in our chat."); }
 }
 
 function legacyCopy(text){
@@ -688,7 +684,7 @@ document.getElementById("mailBtn").addEventListener("click", function(){
     return;
   }
   var to = REPLY_TO ? encodeURIComponent(REPLY_TO) : "";
-  var url = "mailto:" + to + "?subject=" + encodeURIComponent("Balitski Vision — Minutes, Meeting No. 001") + "&body=" + encodeURIComponent(body);
+  var url = "mailto:" + to + "?subject=" + encodeURIComponent("Balitski Vision — Dad's answers") + "&body=" + encodeURIComponent(body);
   window.location.href = url;
 });
 
@@ -696,10 +692,10 @@ document.getElementById("copyBtn").addEventListener("click", function(){
   var text = buildDigest();
   if(navigator.clipboard && navigator.clipboard.writeText){
     navigator.clipboard.writeText(text).then(
-      function(){ toast("Minutes copied — paste them in our chat."); },
-      function(){ legacyCopy(text); toast("Minutes copied — paste them in our chat."); }
+      function(){ toast("Answers copied — paste them in our chat."); },
+      function(){ legacyCopy(text); toast("Answers copied — paste them in our chat."); }
     );
-  } else { legacyCopy(text); toast("Minutes copied — paste them in our chat."); }
+  } else { legacyCopy(text); toast("Answers copied — paste them in our chat."); }
 });
 
 render();
